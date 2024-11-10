@@ -11,3 +11,5 @@
 
 yarn-debug.log*
 npm-debug.log*
+
+.env
