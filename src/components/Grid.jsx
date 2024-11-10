@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchDataThunk, incrementPage } from '../utils/State_Management/slices/dataSlice';
 import Thumbnail from './Thumbnail';
 import ShimmerUI from '../utils/shimmerUI';
+import { BASE_URL } from '../utils/constant';
 
 const Grid = () => {
   const { items, loading, page, searchTerm } = useSelector((state) => state.data);
@@ -34,7 +35,7 @@ const Grid = () => {
           key={item.id || index}
           ref={index === filteredItems.length - 1 ? lastItemRef : null}
           title={item.name}
-          imageUrl={`https://test.create.diagnal.com/images/${item['poster-image']}`}
+          imageUrl={`${BASE_URL}/images/${item['poster-image']}`}
         />
       ))}
       {loading && <ShimmerUI />}

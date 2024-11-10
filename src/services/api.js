@@ -1,4 +1,4 @@
-const BASE_URL = 'https://test.create.diagnal.com';
+import { BASE_URL } from "../utils/constant";
 
 export const fetchData = async (page) => {
   const response = await fetch(`${BASE_URL}/data/page${page}.json`);
