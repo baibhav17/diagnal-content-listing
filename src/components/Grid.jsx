@@ -6,7 +6,7 @@ import ShimmerUI from '../utils/shimmerUI';
 import { BASE_URL } from '../utils/constant';
 
 const Grid = () => {
-  const { items, loading, page, searchTerm } = useSelector((state) => state.data);
+  const { items, loading, page, searchTerm, error } = useSelector((state) => state.data);
   const dispatch = useDispatch();
   const observer = useRef();
 
@@ -14,9 +14,9 @@ const Grid = () => {
     if (loading) return;
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        dispatch(incrementPage());
-      }
+      if(error) return;
+      if (!entries[0].isIntersecting) return;
+      dispatch(incrementPage());
     });
     if (node) observer.current.observe(node);
   }, [loading, dispatch]);
@@ -38,7 +38,7 @@ const Grid = () => {
           imageUrl={`${BASE_URL}/images/${item['poster-image']}`}
         />
       ))}
-      {loading && <ShimmerUI />}
+      {/* {loading && <ShimmerUI />} */}
     </div>
   );
 };

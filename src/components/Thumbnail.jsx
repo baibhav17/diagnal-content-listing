@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import imgNotFound from '../assets/imgNotFound.png';
+const Thumbnail = React.forwardRef(({ title, imageUrl }, ref) => {
+  const [currentImageUrl, setCurrentImageUrl] = useState(imageUrl);
+  const fallbackImage = imgNotFound;  // Path to your alternate image
 
-const Thumbnail = React.forwardRef(({ title, imageUrl }, ref) => (
-  <div ref={ref} style={thumbnailStyle}>
-    <img src={imageUrl} alt={title} style={imageStyle} />
-    <p style={titleStyle}>{title}</p>
-  </div>
-));
+  
+  const handleImageError = () => {
+    setCurrentImageUrl(fallbackImage);
+  };
+
+  return (
+    <div ref={ref} style={thumbnailStyle}>
+      <img
+        src={currentImageUrl}
+        alt={title}
+        style={imageStyle}
+        onError={handleImageError}
+      />
+      <p className='scrollable-name' style={titleStyle}>{title}</p>
+    </div>
+  );
+});
 
 const thumbnailStyle = {
   display: 'flex',
