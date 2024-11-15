@@ -10,34 +10,16 @@ const Thumbnail = React.forwardRef(({ title, imageUrl }, ref) => {
   };
 
   return (
-    <div ref={ref} style={thumbnailStyle}>
+    <div ref={ref} className='thumbnailStyle'>
       <img
         src={currentImageUrl}
         alt={title}
-        style={imageStyle}
+        className='imageStyle'
         onError={handleImageError}
       />
-      <p className='scrollable-name' style={titleStyle}>{title}</p>
+      <p className='scrollable-name'>{title}</p>
     </div>
   );
 });
-
-const thumbnailStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-};
-
-const imageStyle = {
-  width: '100%',
-  aspectRatio: '2/3',
-  objectFit: 'cover',
-  borderRadius: '8px',
-};
-
-const titleStyle = {
-  fontSize: '0.9rem',
-  marginTop: '8px',
-};
 
 export default Thumbnail;

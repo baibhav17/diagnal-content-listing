@@ -29,7 +29,7 @@ const Grid = () => {
     ? items.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
     : items;
   return filteredItems.length === 0 ? <ShimmerUI /> : (
-    <div style={gridStyle}>
+    <div className='grid-style'>
       {filteredItems.map((item, index) => (
         <Thumbnail
           key={item.id || index}
@@ -38,16 +38,8 @@ const Grid = () => {
           imageUrl={`${BASE_URL}/images/${item['poster-image']}`}
         />
       ))}
-      {/* {loading && <ShimmerUI />} */}
     </div>
   );
-};
-
-const gridStyle = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
-  gap: '10px',
-  padding: '20px',
 };
 
 export default Grid;
