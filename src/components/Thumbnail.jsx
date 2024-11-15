@@ -25,8 +25,7 @@ const Thumbnail = React.forwardRef(({ title, imageUrl }, ref) => {
 const thumbnailStyle = {
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
-  textAlign: 'center',
+  alignItems: 'flex-start',
 };
 
 const imageStyle = {
