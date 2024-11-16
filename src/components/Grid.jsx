@@ -24,11 +24,14 @@ const Grid = () => {
   useEffect(() => {
     dispatch(fetchDataThunk(page));
   }, [page, dispatch]);
+  if (items.length === 0) {
+    return <ShimmerUI />
+  }
 
   const filteredItems = searchTerm
     ? items.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
     : items;
-  return filteredItems.length === 0 ? <ShimmerUI /> : (
+  return filteredItems.length === 0 ? <ShimmerUI message="Oops! this title is not available" /> : (
     <div className='grid-style'>
       {filteredItems.map((item, index) => (
         <Thumbnail

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Provider, useDispatch } from 'react-redux';
 import Back from '../assets/Back.png';
+import searchIcon from '../assets/searchIcon.png';
 import { setSearchTerm } from '../utils/State_Management/slices/dataSlice';
 const SearchBar = () => {
     const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const SearchBar = () => {
           dispatch(setSearchTerm(e.target.value))}
         }
       />
+      <img className='search-icon' src={searchIcon} />
       </div>
     );
   };
