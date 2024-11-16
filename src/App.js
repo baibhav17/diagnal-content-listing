@@ -9,8 +9,12 @@ function App() {
   return (
     <Provider store={appStore}>
       <div className="App">
-        <SearchBar />
+      <nav className="navbar">
+          <SearchBar />
+        </nav>
+        <div className='main-grid'>
         <Grid />
+        </div>
       </div>
     </Provider>
   );

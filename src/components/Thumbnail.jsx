@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import imgNotFound from '../assets/imgNotFound.png';
 const Thumbnail = React.forwardRef(({ title, imageUrl }, ref) => {
   const [currentImageUrl, setCurrentImageUrl] = useState(imageUrl);
-  const fallbackImage = imgNotFound;  // Path to your alternate image
-
-  
+  const fallbackImage = imgNotFound;
   const handleImageError = () => {
     setCurrentImageUrl(fallbackImage);
   };
