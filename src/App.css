@@ -35,6 +35,11 @@
     color: var(--text-color);
   }
 
+  .search-bar-input:focus {
+    border-color: transparent;
+    outline: transparent;
+  }
+
   .searhbar-back-btn {
     height: 50px;
     width: 10%;
