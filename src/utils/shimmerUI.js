@@ -8,8 +8,6 @@ const ShimmerUI = ({message}) => {
         </div>}
         {message && <div className="shimmer-ui-container">
             <div className="shimmer-ui-card">{message}</div>
-            <div className="shimmer-ui-card">{message}</div>
-            <div className="shimmer-ui-card">{message}</div>
         </div>}
         </>
         
