@@ -18,6 +18,7 @@ const SearchBar = () => {
 
     const handleShowSearchBar = () => {
       setSearchBarText('')
+      dispatch(setSearchTerm(''))
       setShowSearchBar(!showSearchBar)
     }
     return (
