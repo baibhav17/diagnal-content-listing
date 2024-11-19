@@ -17,8 +17,8 @@ const SearchBar = () => {
     }
 
     const handleShowSearchBar = () => {
-      setShowSearchBar(!showSearchBar)
       setSearchBarText('')
+      setShowSearchBar(!showSearchBar)
     }
     return (
       <div className='search-bar-wrapper'>
