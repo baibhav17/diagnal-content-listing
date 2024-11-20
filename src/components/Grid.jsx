@@ -1,3 +1,4 @@
+import '../styles/Grid.css'
 import React, { useEffect, useRef, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDataThunk, incrementPage } from '../utils/State_Management/slices/dataSlice';
@@ -10,6 +11,7 @@ const Grid = () => {
   const dispatch = useDispatch();
   const observer = useRef();
 
+  // Using 'IntersectionObserver' for handling infinite scrolling instead of framework I am using core 'IntersectionObserver'.
   const lastItemRef = useCallback((node) => {
     if (loading) return;
     if (observer.current) observer.current.disconnect();
@@ -21,13 +23,20 @@ const Grid = () => {
     if (node) observer.current.observe(node);
   }, [loading, dispatch]);
 
+  // Fetching data on with respect to page change on scroll.
   useEffect(() => {
     dispatch(fetchDataThunk(page));
   }, [page, dispatch]);
+
+  /* rendering empty blocks and giving a shimmering effect.
+   when there is a slow internet or no result in search or fetch.
+   Shimmer gives a fake effect when data is loading state.
+   */
   if (items.length === 0) {
     return <ShimmerUI />
   }
 
+  // Checking Filtered Item, if any and if no filter item is present then show all items.
   const filteredItems = searchTerm
     ? items.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
     : items;
